@@ -1,12 +1,15 @@
 <template>
   <div class="container">
-    <Modale :revele="revele" :item="item" :index="index" @newitem="newItem" />
-    <span>TotalPrice : {{ this.$store.state.courses.totalPrice }} €</span>
+    <Modale :revele="revele" :item="item" :price="price" :index="index" @newitem="newItem" />
+    <div class="total">
+      <span>TotalArticle : {{ this.$store.state.courses.totalArticle }} </span>
+      <span>TotalPrice : {{ Math.round(this.$store.state.courses.totalPrice * 100) /100 }} €</span>
+    </div>
     <ul v-for="(todo, index) in todos" :key="index">
       <li v-if="!todo.checked" @load="total(todo.price)">
           <div class="liste">
-              <div>{{ todo.text }} </div>
-              <div>{{ todo.price }} €</div>
+              <div class="listeText">{{ todo.text }} </div>
+              <div class="listePrice">{{ todo.price }} €</div>
           </div>
         <div class="align">
            <button class="btn green" type="button" @click="checked(index)">
@@ -29,7 +32,7 @@
 </template>
 
 <script>
-import Modale from '@/components/Modale'
+import Modale from '@/components/courses/Modale'
 import { mapActions } from 'vuex'
 
 export default {
@@ -38,6 +41,7 @@ export default {
     return {
       revele: false,
       item: '',
+      price: 0,
       index: ''
     }
   },
@@ -49,18 +53,23 @@ export default {
     ...mapActions({
       delTodoStore : 'courses/delTodo',
       checkedTodoStore : 'courses/checkedTodo',
-      newItemStore : 'courses/newItem'
+      newItemStore : 'courses/newItem',
+      totalStore : 'courses/total'
     }),
     del(index) {
       this.delTodoStore(index);
+      this.totalStore();
     },
     checked(index) {
       this.checkedTodoStore(index);
+      this.totalStore();
     },
     modif(index) {
       this.item = this.$store.state.courses.todolistCourse[index].text;
+      this.price = this.$store.state.courses.todolistCourse[index].price;
       this.index= index;
       this.revele = true;
+      this.totalStore();
     },
     newItem(value) {
       this.newItemStore(value);
@@ -73,10 +82,11 @@ export default {
 .container{
   padding-top: 20px;
 }
-span{
-    display:block;
-    text-align:right;
-    padding-bottom:10px;
+.total{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
 }
 li{
   line-height:20px;
@@ -95,6 +105,13 @@ li{
     justify-content: space-between;
     align-items: center;
     padding-right: 15px;
+}
+.listeText{
+  width:80%;
+}
+.listePrice{
+  width: 20%;
+  text-align: right;
 }
 .align{
   display: flex;

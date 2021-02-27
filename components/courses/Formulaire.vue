@@ -2,7 +2,7 @@
   <div class="container">
     <form @submit.prevent="saveTodo">
       <input class="input" type="text" placeholder="Entrer votre item"  v-model="item" required>
-      <input class="price" type="number" step="0.01" placeholder="Prix" v-model="price" required>
+      <input class="price" type="number" step="0.01" min="0" placeholder="Prix" v-model="price" required>
       <input type="submit" class="btn" value="+" >
     </form>
   </div>  
@@ -24,14 +24,14 @@ export default {
     ...mapActions({
       loadTodoStore : 'courses/loadTodo',
       saveTodoStore : 'courses/saveTodo',
-      totalPriceStore : 'courses/totalPrice'
+      totalStore : 'courses/total'
       }),
     saveTodo() {  
       this.saveTodoStore({
           item: this.item,
           price: this.price
       });
-      this.totalPriceStore(this.price);
+      this.totalStore();
       this.item = '';
       this.price = '';
     }
@@ -54,18 +54,19 @@ form{
   justify-content: space-between;
 }
 .input{
-  width:80%;
+  width:70%;
 }
 .price{
     width:10%;
 }
 .input, .price{
-    height:40px;
+  height:40px;
   border: none;
   background-color: transparent;
   color: #fafafa;
   font-size:20px;
   outline: none;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 .input::placeholder, .price::placeholder{
   color: #fafafa;

@@ -1,10 +1,17 @@
 <template>
     <div class="overlay" v-if="revele">
         <div class="modale">
-        <span>Veuillez corriger votre article !</span>
+        <span>Veuillez corriger votre item !</span>
         <form class="form">
-            <input type="text" :value="item">
-            <input type="submit" class="btn" @click="modif" value="Enregistrer">
+          <div class="formModale">
+            <label for="article">Article</label>
+            <input class="input" type="text" id="article" :value="item">
+          </div>
+          <div class="formModale">
+            <label for="price">Prix</label>
+            <input class="input" type="number" id="price" step="0.01" min="0" :value="price">
+          </div>
+          <input type="submit" class="btn" @click="modif" value="Enregistrer">
         </form>
     </div>
     </div>
@@ -14,11 +21,12 @@
 <script>
 export default {
     name: 'Modale',
-    props:['revele', 'item', 'index'],
+    props:['revele', 'item','price', 'index'],
     methods: {
         modif(event) {
             let data = {
                 item : event.target.form[0].value,
+                price: event.target.form[1].value,
                 index: this.index
             };
             this.$emit('newitem', data )
@@ -53,6 +61,18 @@ span{
     display: flex;
     flex-direction: column;
     padding: 20px 0 30px;
+}
+.formModale{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+label{
+  width:20%;
+}
+.input{
+  width:80%;
 }
 input{
     border: none;

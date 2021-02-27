@@ -1,6 +1,7 @@
 export const state = () => ({
     todolistCourse : [],
-    totalPrice: ''
+    totalPrice: 0,
+    totalArticle : 0
 });
 
 export const mutations = {
@@ -44,22 +45,33 @@ export const mutations = {
     },
     NEW_ITEM : (state, value) => {
         state.todolistCourse[value.index].text = value.item;
+        state.todolistCourse[value.index].price = value.price;
     },
-    TOTAL_PRICE : (state, price) => {
-        state.totalPrice = Number(state.totalPrice) + Number(price);
-    },
-    CALCUL_PRICE : (state) => {
+    TOTAL_PRICE : (state) => {
+        state.totalPrice = 0;
         for(let i=0; i < state.todolistCourse.length;i++){
-            console.log(state.todolistCourse[i].price);
-            state.totalPrice = Number(state.totalPrice) + Number(state.todolistCourse[i].price);
+            if(!state.todolistCourse[i].checked){
+                state.totalPrice = parseFloat(state.totalPrice) + parseFloat(state.todolistCourse[i].price);
+            }        
         }
+    },
+    TOTAL_ARTICLE : (state) => {
+        state.totalArticle = 0;
+        let checked = 0;
+        for(let i=0; i < state.todolistCourse.length;i++){
+            if(state.todolistCourse[i].checked){
+                checked++;
+            }        
+        }
+        state.totalArticle = state.todolistCourse.length - checked;
     }
 };
 
 export const actions = {
     loadTodo : (state) =>{
         state.commit('LOAD_TODO');
-        state.commit('CALCUL_PRICE');
+        state.commit('TOTAL_PRICE');
+        state.commit('TOTAL_ARTICLE');
     },
     saveTodo : (state, { item, price }) =>{
         console.log(item, price);
@@ -78,7 +90,8 @@ export const actions = {
         state.commit('NEW_ITEM', value);
         state.commit('SAVE_LOCAL');
     },
-    totalPrice : (state, price) => {
-        state.commit('TOTAL_PRICE', price);
+    total : (state) => {
+        state.commit('TOTAL_PRICE');
+        state.commit('TOTAL_ARTICLE')
     }
 }
