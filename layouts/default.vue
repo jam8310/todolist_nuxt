@@ -1,5 +1,11 @@
 <template>
   <div>
+    <div class="nav">
+      <nav>
+        <nuxt-link to="/" exact-active-class="active">Liste Tache</nuxt-link>
+        <nuxt-link to="/listeCourse" exact-active-class="active">Liste Course </nuxt-link>
+      </nav>
+    </div>
     <Nuxt />
   </div>
 </template>
@@ -31,8 +37,24 @@ html {
   margin: 0;
   padding: 0;
 }
-
-.container {
+.nav{
+  padding:15px;
+  text-align: center;
+}
+a{
+  text-decoration: none;
+  color: #333;
+  margin: 0 20px;
+  transition: .2s;
+}
+a:hover{
+  color:#999;
+}
+.active{
+  color:#999;
+  border-bottom: 1px solid #3b8070;
+}
+.container, .nav{
   max-width: 800px;
   margin: 0 auto;
 }

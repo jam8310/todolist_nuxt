@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <form @submit.prevent="saveTodo">
-      <input class="input" type="text" placeholder="Entrer votre item"  v-model="item" required>
+      <input class="input" type="text" placeholder="Entrer votre tache"  v-model="item" required>
       <input type="submit" class="btn" value="+" >
     </form>
   </div>  
