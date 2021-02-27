@@ -58,6 +58,7 @@ form{
 }
 .price{
     width:10%;
+    min-width:65px;
 }
 .input, .price{
   height:40px;

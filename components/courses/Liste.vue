@@ -86,7 +86,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 10px;
+  padding: 0 15px 15px;
 }
 li{
   line-height:20px;
@@ -111,6 +111,7 @@ li{
 }
 .listePrice{
   width: 20%;
+  min-width:65px;
   text-align: right;
 }
 .align{

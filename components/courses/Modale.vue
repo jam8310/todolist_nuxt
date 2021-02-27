@@ -64,15 +64,14 @@ span{
 }
 .formModale{
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   margin: 10px 0;
 }
 label{
-  width:20%;
+    padding-bottom:10px;
 }
 .input{
-  width:80%;
+  width:100%;
 }
 input{
     border: none;
