@@ -26,7 +26,7 @@ export default {
       loadTodoStore : 'loadTodo'
       }),
     charge() {
-      
+
       this.loadTodoStore();
       this.todos = this.$store.state.todolist;
     }
@@ -38,15 +38,7 @@ export default {
 </script>
 
 <style>
-*{
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-}
+
 h1{
   text-align: center;
 }
