@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Formulaire from '@/components/courses/Formulaire'
-import Liste from '@/components/courses/Liste'
+import Formulaire from '@/components/courses/FormulaireCourses'
+import Liste from '@/components/courses/ListeCourses'
 import { mapActions } from 'vuex'
 
 export default {

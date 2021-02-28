@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import Modale from '@/components/courses/Modale'
+import Modale from '@/components/courses/ModaleCourses'
 import { mapActions } from 'vuex'
 
 export default {
