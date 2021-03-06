@@ -92,6 +92,5 @@ a:hover{
   a{
     margin:0 5px;
   }
-  
 }
 </style>
