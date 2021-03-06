@@ -1,15 +1,19 @@
 <template>
     <div class="overlay" v-if="revele">
         <div class="modale">
-        <span>Veuillez corriger votre course !</span>
+        <span>Veuillez corriger votre site !</span>
         <form class="form">
           <div class="formModale">
-            <label for="article">Article</label>
-            <input class="input" type="text" id="article" :value="item">
+            <label for="site">Site</label>
+            <input class="input" type="text" id="site" :value="item" required>
           </div>
           <div class="formModale">
-            <label for="price">Prix</label>
-            <input class="input" type="number" id="price" step="0.01" min="0" :value="price">
+            <label for="email">Email</label>
+            <input class="input" type="text" id="email" autocomplete="off" :value="email" required>
+          </div>
+          <div class="formModale">
+            <label for="mdp">Mot de passe</label>
+            <input class="input" type="text" id="mdp" :value="mdp" required>
           </div>
           <input type="submit" class="btn" @click="modif" value="Enregistrer">
         </form>
@@ -21,12 +25,13 @@
 <script>
 export default {
     name: 'Modale',
-    props:['revele', 'item','price', 'index'],
+    props:['revele', 'item', 'email', 'mdp', 'index'],
     methods: {
         modif(event) {
             let data = {
                 item : event.target.form[0].value,
-                price: event.target.form[1].value,
+                email : event.target.form[1].value,
+                mdp : event.target.form[2].value,
                 index: this.index
             };
             this.$emit('newitem', data )
@@ -44,7 +49,7 @@ export default {
 }
 .modale{
     position: fixed;
-    top:30%;left:50%;
+    top:40%;left:50%;
     transform: translate(-50%, -50%);
     border: 1px solid #333;
     width:80%;

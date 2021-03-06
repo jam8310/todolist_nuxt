@@ -67,7 +67,7 @@ export default {
     modif(index) {
       this.item = this.$store.state.courses.todolistCourse[index].text;
       this.price = this.$store.state.courses.todolistCourse[index].price;
-      this.index= index;
+      this.index = index;
       this.revele = true;
       this.totalStore();
     },

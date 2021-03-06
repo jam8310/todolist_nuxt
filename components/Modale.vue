@@ -1,7 +1,7 @@
 <template>
     <div class="overlay" v-if="revele">
         <div class="modale">
-        <span>Veuillez corriger votre article !</span>
+        <span>Veuillez corriger votre tache !</span>
         <form class="form">
             <input type="text" :value="item">
             <input type="submit" class="btn" @click="modif" value="Enregistrer">

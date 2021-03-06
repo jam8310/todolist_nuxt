@@ -4,6 +4,7 @@
       <nav>
         <nuxt-link to="/" exact-active-class="active">Liste Tache</nuxt-link>
         <nuxt-link to="/listeCourse" exact-active-class="active">Liste Course </nuxt-link>
+        <nuxt-link to="/listeSite" exact-active-class="active">Liste Site </nuxt-link>
       </nav>
     </div>
     <Nuxt />
@@ -86,5 +87,11 @@ a:hover{
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+@media screen and (max-width: 400px) {
+  a{
+    margin:0 5px;
+  }
+  
 }
 </style>
