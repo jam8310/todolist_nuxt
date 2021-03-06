@@ -7,7 +7,7 @@
           {{ todo.text }} 
           <div class="align">
             <button class="btn green" type="button" @click="checked(index)">
-              ⬇
+              <img src="../../assets/img/chevronDown.svg" alt="">
             </button>
             <button class="btn" type="button" @click="modif(index)">&#9998;</button>
             <button class="btn red" type="button" @click="del(index)">&#10008;</button>
@@ -18,7 +18,7 @@
           {{ todo.text }} 
           <div class="align">
             <button class="btn green" type="button" @click="checked(index)">
-              ⬆
+              <img src="../../assets/img/chevronUp.svg" alt="">
             </button>
             <button class="btn" type="button" @click="modif(index)">&#9998;</button>
             <button class="btn red" type="button" @click="del(index)">&#10008;</button>
