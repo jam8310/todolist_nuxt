@@ -25,7 +25,7 @@
           </div>
         </div>
         <div class="elements">
-          <b>Email:</b> {{ todo.email }} <br>
+          <b>Identifiant:</b> {{ todo.email }} <br>
          <b> Mdp:</b> {{ todo.mdp }}
 
         </div>
