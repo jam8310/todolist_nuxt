@@ -1,13 +1,15 @@
 <template>
     <div class="container">
-        <Formulaire :todos="todos" />
-        <Liste :todos="todos" />
+      <Mdp :revele="affiche" />
+      <Formulaire :todos="todos" />
+      <Liste :todos="todos" />
     </div>
 </template>
 
 <script>
 import Formulaire from '@/components/sites/FormulaireSites'
 import Liste from '@/components/sites/ListeSites'
+import Mdp from '@/components/MdpListeSite'
 import { mapActions } from 'vuex'
 
 export default {
@@ -15,12 +17,14 @@ export default {
     data(){
     return {
       todos : '',
-      save: false
+      save: false,
+      affiche: true
     }
   },
     components: {
-        Formulaire,
-        Liste
+      Mdp,
+      Formulaire,
+      Liste
     },
   methods: {
     ...mapActions({
